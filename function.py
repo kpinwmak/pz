@@ -6,6 +6,15 @@ def get_int_input(prompt):
         except ValueError:
             print("❌ กรุณากรอกตัวเลขจำนวนเต็มที่ถูกต้องเท่านั้นครับ")
 
+def get_str_N(prompt):
+    """ฟังก์ชันสำหรับรับค่าและบังคับให้ใส่ N,n เท่านั้น"""
+    while True:
+        val = input(prompt).strip().lower()
+        if val == 'n':
+            return val
+        print("N,n เท่านั้นครับ")
+
+
 
 def get_date():
     """ฟังก์ชั่นสำหรับรับค่าวันที่ (1-31), เดือน (1-12) และปี (4 หลัก, 2568-2569)"""
@@ -39,11 +48,51 @@ def get_date():
 
 def stock(food_list, category_name):
     print(f"\n[เพิ่มสต็อกหมวด: {category_name}]")
-    stock=[]
-    for i in food_list:
-        pstock = int(input(f"{i} : "))
-        stock.append(pstock)
-    return(stock)
+    while True:
+        try:
+            stock=[]
+            for i in food_list:
+                pstock = int(input(f"{i} : "))
+                stock.append(pstock)
+            return(stock)
+        except ValueError:
+            print("❌ กรุณากรอกตัวเลขจำนวนเต็มที่ถูกต้องเท่านั้นครับ")
+
+
+
+# def show1(food_list, mainfood):
+#     print(f"ตอนนี้ในStockของ{mainfood[0]}คุณมี")
+#     for item in enumerate(food_list,1):
+#         print(f"{food_list[item]}")
+
+
+
+
+
+
+
+
+
+
+
+# def stockback(foodlist):
+#     for i in enumerate(foodlist):
+#         print(f"ของในStockตอนนี้ {foodlist[i]} :")
+
+
+
+
+# def ask():
+#     while True:
+#         go = input("ไปต่อNext(n) กลับBack(b) : ").strip().lower()
+#         if go == "n" or go == "b":
+#             return go
+#         print("❌ พิมพ์ n หรือ b เท่านั้นครับ")
+
+
+# def askb():
+    
+
 
 
 def input_sales_category(food_list, stock_list, category_name):
