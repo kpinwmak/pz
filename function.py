@@ -6,13 +6,25 @@ def get_int_input(prompt):
         except ValueError:
             print("❌ กรุณากรอกตัวเลขจำนวนเต็มที่ถูกต้องเท่านั้นครับ")
 
-def get_str_N(prompt):
-    "ฟังก์ชันสำหรับรับค่าและบังคับให้ใส่ N,n เท่านั้น"
+def get_str_N(p):
     while True:
-        val = input(prompt).strip().lower()
-        if val == 'n':
+        try:
+            val = input(p).strip().lower()
+            if val != 'n':
+                raise Exception("N, n เท่านั้นครับ")
             return val
-        print("N,n เท่านั้นครับ")
+        except Exception as e:
+            print(e)
+
+def get_str_nb(p):
+    while True:
+            try:
+                val = input(p).strip().lower()
+                if val != 'n' and val != 'b':
+                    raise Exception("(N, n or B,b) เท่านั้นครับ")
+                return val
+            except Exception as e:
+                print(e)
 
 
 def get_date():
@@ -36,18 +48,18 @@ def get_date():
                 if not (1 <= day <= 31):
                     raise ValueError("วันที่ต้องอยู่ระหว่าง 1 ถึง 31 เท่านั้นครับ")
             
-            year_str = input("ปี (พ.ศ. 4 หลัก อยู่ในปี พ.ศ.2569 เท่านั้นครับ ) : ")
+            year_str = input("ปี (พ.ศ. 4 หลัก อยู่ในปี พ.ศ.2569 หรือสูงกว่าครับ ) : ")
             if len(year_str) != 4 or not year_str.isdigit():
                 raise ValueError("ปีต้องเป็นตัวเลข 4 หลักเท่านั้นครับ")
 
             year = int(year_str)
-            if not year == 2569 :
-                raise ValueError("ปีต้องอยู่ใน ปี พ.ศ.2569 เท่านั้นครับ")
+            if not year >= 2569 :
+                raise ValueError("ปีต้องอยู่ใน ปี พ.ศ.2569 หรือสูงเท่านั้นครับ")
             
             return day, str(month), year
             
-        except ValueError as e:
-            print(f"❌ กรุณากรอกตัวเลขจำนวนเต็มที่ถูกต้องเท่านั้นครับ {e}")
+        except ValueError:
+            print(f"❌ กรุณากรอกตัวเลขจำนวนเต็มที่ถูกต้องเท่านั้นครับ")
 
 
 def stock(food_list, category_name):
@@ -66,7 +78,7 @@ def stock(food_list, category_name):
 
 
 def input_sales_category(food_list, stock_list, category_name):
-    """ฟังก์ชั่นสำหรับบันทึกการขายและหักลบสต็อก"""
+    # """ฟังก์ชั่นสำหรับบันทึกการขายและหักลบสต็อก"""
     print(f"\n[Sold Food] หมวด: {category_name}")
     sold_list = []
     for idx, item in enumerate(food_list):
