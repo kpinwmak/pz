@@ -6,6 +6,7 @@ def get_int_input(prompt):
         except ValueError:
             print("❌ กรุณากรอกตัวเลขจำนวนเต็มที่ถูกต้องเท่านั้นครับ")
 
+
 def get_str_N(p):
     while True:
         try:
@@ -27,9 +28,14 @@ def get_str_nb(p):
                 print(e)
 
 
+
+
+
+
+
 def get_date():
     # ฟังก์ชั่นสำหรับรับค่าวันที่ (1-31), เดือน (1-12) และปี (4 หลัก, 2026, 2569)
-    print("date (วันที่ :)")
+    print("|------------------DATE------------------|")
     while True:
         try:
             month = int(input("เดือน (ตัวเลข 1-12) : "))
@@ -58,8 +64,8 @@ def get_date():
             
             return day, str(month), year
             
-        except ValueError:
-            print(f"❌ กรุณากรอกตัวเลขจำนวนเต็มที่ถูกต้องเท่านั้นครับ")
+        except ValueError :
+            print(f"❌ กรุณากรอกให้ถูกต้อง")
 
 
 def stock(food_list, category_name):
